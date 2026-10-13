@@ -10,38 +10,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Kodchasan:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        :root { --guide-ink:#20354a; --guide-blue:#13b9da; --guide-sand:#fff4d9; }
-        body { background: #081b2a; }
-        .guidebook { width:min(1120px,calc(100% - 2rem)); margin:1.5rem auto 4rem; color:#f8fbff; }
-        .guide-top { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
-        .guide-top a { color:#ffe19b; }
-        .guide-hero { position:relative; overflow:hidden; margin:1.5rem 0; padding:clamp(1.5rem,5vw,3.5rem); border:1px solid #69e1ef88; border-radius:1.5rem; background:radial-gradient(ellipse at 85% 10%,#20c9df 0,transparent 36%),linear-gradient(135deg,#0e5271,#102940 65%,#07394d); box-shadow:0 18px 60px #0005; }
-        .guide-hero::after { content:""; position:absolute; width:18rem; height:18rem; right:-6rem; bottom:-11rem; border:2rem solid #8ce8ed44; border-radius:50%; }
-        .guide-kicker { margin:0; color:#a6f2f0; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
-        .guide-hero h1 { margin:.35rem 0 1rem; color:#fff; font:clamp(2.5rem,8vw,5rem)/.95 Jaro,sans-serif; }
-        .guide-hero h1 span { display:block; color:#ffe19b; font-size:.52em; margin-top:.55rem; }
-        .guide-hero p { max-width:54rem; line-height:1.8; }
-        .guide-nav { display:flex; flex-wrap:wrap; gap:.6rem; margin:1.5rem 0 2rem; }
-        .guide-nav a { display:inline-block; padding:.65rem .9rem; border:1px solid #90e3eb77; border-radius:999px; background:#102e46; color:#e9fbff; text-decoration:none; }
-        .guide-nav a:hover,.guide-nav a:focus-visible { background:#147a91; }
-        .guide-section { scroll-margin-top:1rem; margin:2rem 0; padding:clamp(1rem,3vw,2rem); border:1px solid #ffffff20; border-radius:1.2rem; background:#10283bd9; }
-        .guide-section > h2 { margin:0 0 1.2rem; color:#87e8ef; font:clamp(1.8rem,5vw,2.6rem) Jaro,sans-serif; }
-        .guide-section > h3 { margin:1.6rem 0 .6rem; color:#ffe19b; font-size:1.2rem; }
-        .guide-section p,.guide-section li { line-height:1.75; }
-        .guide-events { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:.8rem; }
-        .guide-event { padding:1rem; border-radius:.9rem; background:linear-gradient(140deg,#17455c,#133049); color:#fff; }
-        .guide-event strong { display:block; color:#ffe19b; font-size:1.05rem; }
-        .guide-event span { display:block; margin-top:.35rem; color:#d0e8ef; font-size:.9rem; }
-        .guide-subsection { scroll-margin-top:1rem; margin:1.25rem 0; padding:1.15rem; border-left:3px solid #24c6d6; border-radius:.3rem .8rem .8rem .3rem; background:#0b2032; }
-        .guide-subsection h3 { margin:.1rem 0 .8rem; color:#ffe19b; font-size:1.15rem; }
-        .guide-subsection h4 { margin:1.1rem 0 .4rem; color:#9deaf0; }
-        .guide-subsection ol,.guide-subsection ul { padding-left:1.45rem; margin:.5rem 0; }
-        .guide-subsection li { padding-left:.2rem; margin:.22rem 0; }
-        .guide-callout { padding:1rem; border-radius:.7rem; background:#0a3a4a; color:#e4fbff; line-height:1.7; }
-        .guide-missing { color:#d3dce6; font-style:italic; }
-        .guide-footer { padding:1rem 0; color:#c3d5df; text-align:center; }
-        @media(max-width:600px) { .guidebook { width:calc(100% - 1rem); margin-top:.75rem; } .guide-section { padding:1rem; } }
-        @media print { body { background:white; color:#111; } .guidebook,.guide-section,.guide-subsection { color:#111; background:white; box-shadow:none; } .guide-nav,.guide-top { display:none; } .guide-section { break-inside:avoid; border:1px solid #aaa; } .guide-section > h2,.guide-subsection h3,.guide-subsection h4 { color:#111; } }
+        :root {
+            --guide-ink: #263b43;
+            --guide-muted: #66777a;
+            --guide-paper: #f6f4ee;
+            --guide-card: #fffefa;
+            --guide-line: #deded4;
+            --guide-sea: #527b78;
+            --guide-sand: #c29a5b;
+        }
+        body { background: var(--guide-paper); color: var(--guide-ink); }
+        .guidebook { width: min(1000px, calc(100% - 2rem)); margin: 1.25rem auto 3rem; color: var(--guide-ink); counter-reset: guide-chapter; }
+        .guide-top { display:flex; justify-content:space-between; gap:1rem; padding:0 0 .9rem; border-bottom:1px solid var(--guide-line); }
+        .guide-top a { color:var(--guide-sea); font-size:.9rem; text-decoration:none; }
+        .guide-top a:hover,.guide-top a:focus-visible { color:#2c5553; text-decoration:underline; text-underline-offset:3px; }
+        .guide-hero { margin:2.2rem 0 1.8rem; padding:0 0 1.9rem; border-bottom:1px solid var(--guide-line); }
+        .guide-kicker { margin:0 0 .6rem; color:var(--guide-sea); font-size:.75rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+        .guide-hero h1 { margin:0; color:var(--guide-ink); font:clamp(2.7rem,8vw,5.3rem)/.98 Jaro,sans-serif; letter-spacing:.01em; }
+        .guide-hero h1 span { display:inline-block; margin-left:.45rem; color:var(--guide-sand); font:500 .28em/1 Kodchasan,sans-serif; letter-spacing:.08em; vertical-align:middle; }
+        .guide-hero p:last-child { max-width:42rem; margin:1rem 0 0; color:var(--guide-muted); line-height:1.75; }
+        .guide-nav { display:flex; flex-wrap:wrap; gap:.15rem 1.2rem; margin:0 0 2.6rem; padding:.85rem 0; border-top:1px solid var(--guide-line); border-bottom:1px solid var(--guide-line); }
+        .guide-nav a { padding:.25rem 0; color:var(--guide-muted); font-size:.88rem; text-decoration:none; }
+        .guide-nav a:hover,.guide-nav a:focus-visible { color:var(--guide-sea); text-decoration:underline; text-underline-offset:4px; }
+        .guide-section { counter-increment:guide-chapter; scroll-margin-top:1rem; margin:2rem 0; padding:clamp(1.25rem,3vw,2rem); border:1px solid var(--guide-line); border-radius:.65rem; background:var(--guide-card); }
+        .guide-section > h2 { display:flex; align-items:baseline; gap:.75rem; margin:0 0 1.25rem; padding-bottom:.8rem; border-bottom:1px solid var(--guide-line); color:var(--guide-ink); font:clamp(1.8rem,5vw,2.45rem)/1.15 Jaro,sans-serif; }
+        .guide-section > h2::before { content:counter(guide-chapter, decimal-leading-zero); color:var(--guide-sand); font:600 .42em Kodchasan,sans-serif; letter-spacing:.08em; }
+        .guide-section > h3 { margin:1.6rem 0 .6rem; color:var(--guide-sea); font-size:1.15rem; }
+        .guide-section p,.guide-section li { line-height:1.8; }
+        .guide-section > p { max-width:72ch; }
+        .guide-events { display:grid; grid-template-columns:repeat(auto-fit,minmax(205px,1fr)); gap:.65rem; }
+        .guide-event { display:grid; grid-template-columns:2rem 1fr; gap:.15rem .75rem; align-content:start; min-height:6.1rem; padding:.9rem; border:1px solid var(--guide-line); border-radius:.5rem; background:#fff; color:var(--guide-ink); text-decoration:none; transition:border-color .18s ease, background-color .18s ease; }
+        .guide-event:hover,.guide-event:focus-visible { border-color:#9fb8ad; background:#fbfcf8; }
+        .guide-event > span:first-child { grid-row:span 2; color:var(--guide-sand); font-size:.76rem; font-weight:700; }
+        .guide-event strong { font-size:.98rem; font-weight:700; }
+        .guide-event span:last-child { color:var(--guide-muted); font-size:.83rem; line-height:1.5; }
+        .guide-subsection { scroll-margin-top:1rem; margin:1.1rem 0; padding:1.1rem 1.2rem; border-left:2px solid #a8beb4; background:#f7f8f4; }
+        .guide-subsection h3 { margin:.1rem 0 .8rem; color:var(--guide-sea); font-size:1.08rem; }
+        .guide-subsection h4 { margin:1.1rem 0 .4rem; color:#586d69; font-size:.98rem; }
+        .guide-subsection ol,.guide-subsection ul { padding-left:1.4rem; margin:.5rem 0; }
+        .guide-subsection li { padding-left:.2rem; margin:.28rem 0; }
+        .guide-footer { display:flex; justify-content:space-between; gap:1rem; margin-top:2.5rem; padding:1rem 0 0; border-top:1px solid var(--guide-line); color:var(--guide-muted); font-size:.82rem; }
+        @media(max-width:600px) {
+            .guidebook { width:calc(100% - 1.25rem); margin-top:.75rem; }
+            .guide-hero { margin-top:1.5rem; }
+            .guide-hero h1 span { display:block; margin:.45rem 0 0; }
+            .guide-nav { gap:.2rem .9rem; }
+            .guide-subsection { padding:.9rem; }
+            .guide-footer { flex-direction:column; gap:.35rem; }
+        }
+        @media(prefers-reduced-motion:reduce) { .guide-event { transition:none; } }
+        @media print {
+            body { background:#fff; color:#111; }
+            .guidebook,.guide-section,.guide-subsection,.guide-event { color:#111; background:#fff; box-shadow:none; }
+            .guide-nav,.guide-top { display:none; }
+            .guide-section { break-inside:avoid; border:1px solid #aaa; }
+            .guide-section > h2,.guide-subsection h3,.guide-subsection h4 { color:#111; }
+        }
     </style>
 </head>
 <body>
@@ -67,14 +91,14 @@
     <section class="guide-section" id="daftar-lomba">
         <h2>Daftar Lomba</h2>
         <div class="guide-events">
-            <div class="guide-event"><strong>Futsal</strong><span>Juknis pertandingan dan persyaratan peserta</span></div>
-            <div class="guide-event"><strong>Basket</strong><span>Peraturan pertandingan, teknis, dan peserta</span></div>
-            <div class="guide-event"><strong>Digital Poster</strong><span>Ketentuan peserta dan karya</span></div>
-            <div class="guide-event"><strong>PMR</strong><span>Pertolongan pertama, tandu darurat, dan kepalangmerahan</span></div>
-            <div class="guide-event"><strong>Mobile Legends</strong><span>Pendaftaran dan peraturan pertandingan</span></div>
-            <div class="guide-event"><strong>Video Competition</strong><span>Ketentuan peserta dan karya</span></div>
-            <div class="guide-event"><strong>Free Fire</strong><span class="guide-missing">Rincian ketentuan belum tersedia pada teks yang dikirim.</span></div>
-            <div class="guide-event"><strong>Short Movie</strong><span class="guide-missing">Rincian ketentuan belum tersedia pada teks yang dikirim.</span></div>
+            <a class="guide-event" href="#futsal"><span>01</span><strong>Futsal</strong><span>Aturan pertandingan dan persyaratan peserta</span></a>
+            <a class="guide-event" href="#basket"><span>02</span><strong>Basket</strong><span>Peraturan pertandingan dan teknis</span></a>
+            <a class="guide-event" href="#poster"><span>03</span><strong>Digital Poster</strong><span>Ketentuan peserta dan karya</span></a>
+            <a class="guide-event" href="#pmr"><span>04</span><strong>PMR</strong><span>Ketentuan umum dan cabang lomba</span></a>
+            <a class="guide-event" href="#mobile-legends"><span>05</span><strong>Mobile Legends</strong><span>Pendaftaran dan peraturan peserta</span></a>
+            <a class="guide-event" href="#video"><span>06</span><strong>Video Competition</strong><span>Ketentuan peserta dan karya</span></a>
+            <a class="guide-event" href="divisi/free-fire.html"><span>07</span><strong>Free Fire</strong><span>Informasi lomba dan dokumen teknis</span></a>
+            <a class="guide-event" href="divisi/short-movie.html"><span>08</span><strong>Short Movie</strong><span>Informasi lomba dan dokumen teknis</span></a>
         </div>
     </section>
 
@@ -257,11 +281,7 @@
         </ol></div>
     </section>
 
-    <section class="guide-section" id="catatan">
-        <h2>Catatan Kelengkapan</h2>
-        <div class="guide-callout">Halaman ini disusun dari teks yang dikirimkan. Rincian lomba Free Fire dan Short Movie serta sebagian materi guidebook yang belum tercantum pada teks sumber belum dimasukkan. Silakan kirim teks atau halaman sumbernya agar bagian tersebut dapat dilengkapi tanpa menebak isi.</div>
-    </section>
-    <footer class="guide-footer">EXPONER CUP 2026 • Explosion of Generation</footer>
+    <footer class="guide-footer"><span>EXPONER CUP 2026</span><span>Explosion of Generation</span></footer>
 </main>
 </body>
 </html>
