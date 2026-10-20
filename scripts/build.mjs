@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const outputDir = resolve(projectRoot, 'dist');
-const publicEntries = ['index.html', 'css', 'js', 'pages', 'assets'];
+const publicEntries = ['index.html', '404.html', 'favicon.svg', 'robots.txt', 'css', 'js', 'pages', 'assets'];
 
 rmSync(outputDir, { recursive: true, force: true });
 mkdirSync(outputDir, { recursive: true });

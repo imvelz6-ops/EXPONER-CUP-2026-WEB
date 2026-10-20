@@ -301,6 +301,15 @@ body {
     flex-wrap: wrap;
 }
 
+.timer-component.timer-ended {
+    width: fit-content;
+    margin-inline: auto;
+    padding: 1rem 1.5rem;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
 .timer-item {
     display: flex;
     flex-direction: column;

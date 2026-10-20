@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="description" content="Guidebook EXPONER CUP 2026: pendahuluan, daftar lomba, peraturan teknis, dan ketentuan peserta.">
     <title>Guidebook — EXPONER CUP 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,23 +33,41 @@
         .guide-nav { display:flex; flex-wrap:wrap; gap:.15rem 1.2rem; margin:0 0 2.6rem; padding:.85rem 0; border-top:1px solid var(--guide-line); border-bottom:1px solid var(--guide-line); }
         .guide-nav a { padding:.25rem 0; color:var(--guide-muted); font-size:.88rem; text-decoration:none; }
         .guide-nav a:hover,.guide-nav a:focus-visible { color:var(--guide-sea); text-decoration:underline; text-underline-offset:4px; }
-        .guide-section { counter-increment:guide-chapter; scroll-margin-top:1rem; margin:2rem 0; padding:clamp(1.25rem,3vw,2rem); border:1px solid var(--guide-line); border-radius:.65rem; background:var(--guide-card); }
+        .guide-section { --event-accent:#527b78; --event-tint:#edf2ee; counter-increment:guide-chapter; scroll-margin-top:1rem; margin:2rem 0; padding:clamp(1.25rem,3vw,2rem); border:1px solid var(--guide-line); border-top:3px solid var(--event-accent); border-radius:.65rem; background:var(--guide-card); }
+        .guide-section--intro { --event-accent:#546b82; --event-tint:#edf1f5; }
+        .guide-section--index { --event-accent:#6b718d; --event-tint:#f0f0f6; }
+        .guide-section--futsal { --event-accent:#b5694e; --event-tint:#f8eee9; }
+        .guide-section--basket { --event-accent:#4f7899; --event-tint:#edf3f8; }
+        .guide-section--poster { --event-accent:#84699a; --event-tint:#f3eff6; }
+        .guide-section--pmr { --event-accent:#5a8266; --event-tint:#eef4ee; }
+        .guide-section--ml { --event-accent:#766a9d; --event-tint:#f1eff7; }
+        .guide-section--video { --event-accent:#ad7848; --event-tint:#f7f1e9; }
+        .guide-section--ff { --event-accent:#a76d35; --event-tint:#f7f0e5; }
+        .guide-section--shortmovie { --event-accent:#a85e59; --event-tint:#f7eeec; }
         .guide-section > h2 { display:flex; align-items:baseline; gap:.75rem; margin:0 0 1.25rem; padding-bottom:.8rem; border-bottom:1px solid var(--guide-line); color:var(--guide-ink); font:clamp(1.8rem,5vw,2.45rem)/1.15 Jaro,sans-serif; }
-        .guide-section > h2::before { content:counter(guide-chapter, decimal-leading-zero); color:var(--guide-sand); font:600 .42em Kodchasan,sans-serif; letter-spacing:.08em; }
-        .guide-section > h3 { margin:1.6rem 0 .6rem; color:var(--guide-sea); font-size:1.15rem; }
+        .guide-section > h2::before { content:counter(guide-chapter, decimal-leading-zero); color:var(--event-accent); font:600 .42em Kodchasan,sans-serif; letter-spacing:.08em; }
+        .guide-section > h2 > span[aria-hidden="true"] { font:normal .72em/1 system-ui,sans-serif; }
+        .guide-section > h3 { margin:1.6rem 0 .6rem; color:var(--event-accent); font-size:1.15rem; }
         .guide-section p,.guide-section li { line-height:1.8; }
         .guide-section > p { max-width:72ch; }
         .guide-events { display:grid; grid-template-columns:repeat(auto-fit,minmax(205px,1fr)); gap:.65rem; }
-        .guide-event { display:grid; grid-template-columns:2rem 1fr; gap:.15rem .75rem; align-content:start; min-height:6.1rem; padding:.9rem; border:1px solid var(--guide-line); border-radius:.5rem; background:#fff; color:var(--guide-ink); text-decoration:none; transition:border-color .18s ease, background-color .18s ease; }
-        .guide-event:hover,.guide-event:focus-visible { border-color:#9fb8ad; background:#fbfcf8; }
-        .guide-event > span:first-child { grid-row:span 2; color:var(--guide-sand); font-size:.76rem; font-weight:700; }
-        .guide-event strong { font-size:.98rem; font-weight:700; }
+        .guide-event { --event-accent:#527b78; --event-tint:#edf2ee; display:grid; grid-template-columns:2rem 1fr; gap:.15rem .75rem; align-content:start; min-height:6.1rem; padding:.9rem; border:1px solid var(--guide-line); border-left:3px solid var(--event-accent); border-radius:.5rem; background:#fff; color:var(--guide-ink); text-decoration:none; transition:border-color .18s ease, background-color .18s ease; }
+        .guide-event:nth-child(4n+1) { --event-accent:#b5694e; --event-tint:#f8eee9; }
+        .guide-event:nth-child(4n+2) { --event-accent:#4f7899; --event-tint:#edf3f8; }
+        .guide-event:nth-child(4n+3) { --event-accent:#84699a; --event-tint:#f3eff6; }
+        .guide-event:nth-child(4n) { --event-accent:#5a8266; --event-tint:#eef4ee; }
+        .guide-event:hover,.guide-event:focus-visible { border-color:var(--event-accent); background:var(--event-tint); }
+        .guide-event > span:first-child { grid-row:span 2; color:var(--event-accent); font-size:.76rem; font-weight:700; }
+        .guide-event strong { color:var(--event-accent); font-size:.98rem; font-weight:700; }
         .guide-event span:last-child { color:var(--guide-muted); font-size:.83rem; line-height:1.5; }
-        .guide-subsection { scroll-margin-top:1rem; margin:1.1rem 0; padding:1.1rem 1.2rem; border-left:2px solid #a8beb4; background:#f7f8f4; }
+        .guide-subsection { scroll-margin-top:1rem; margin:1.1rem 0; padding:1.1rem 1.2rem; border-left:2px solid var(--event-accent); background:var(--event-tint); }
         .guide-subsection h3 { margin:.1rem 0 .8rem; color:var(--guide-sea); font-size:1.08rem; }
         .guide-subsection h4 { margin:1.1rem 0 .4rem; color:#586d69; font-size:.98rem; }
         .guide-subsection ol,.guide-subsection ul { padding-left:1.4rem; margin:.5rem 0; }
         .guide-subsection li { padding-left:.2rem; margin:.28rem 0; }
+        .guide-documents { display:flex; flex-wrap:wrap; gap:.55rem; margin:1rem 0 0; }
+        .guide-documents a { display:inline-flex; align-items:center; gap:.45rem; padding:.55rem .8rem; border:1px solid var(--guide-line); border-radius:.4rem; background:#fff; color:var(--event-accent); font-size:.88rem; font-weight:600; text-decoration:none; }
+        .guide-documents a:hover,.guide-documents a:focus-visible { background:var(--event-tint); border-color:var(--event-accent); }
         .guide-footer { display:flex; justify-content:space-between; gap:1rem; margin-top:2.5rem; padding:1rem 0 0; border-top:1px solid var(--guide-line); color:var(--guide-muted); font-size:.82rem; }
         @media(max-width:600px) {
             .guidebook { width:calc(100% - 1.25rem); margin-top:.75rem; }
@@ -61,7 +80,7 @@
         @media(prefers-reduced-motion:reduce) { .guide-event { transition:none; } }
         @media print {
             body { background:#fff; color:#111; }
-            .guidebook,.guide-section,.guide-subsection,.guide-event { color:#111; background:#fff; box-shadow:none; }
+            .guidebook,.guide-section,.guide-subsection,.guide-event,.guide-documents a { color:#111; background:#fff; box-shadow:none; }
             .guide-nav,.guide-top { display:none; }
             .guide-section { break-inside:avoid; border:1px solid #aaa; }
             .guide-section > h2,.guide-subsection h3,.guide-subsection h4 { color:#111; }
@@ -74,36 +93,37 @@
     <header class="guide-hero">
         <p class="guide-kicker">Explosion of Generation</p>
         <h1>EXPONER <span>Guidebook • 2026</span></h1>
-        <p>Panduan kegiatan dan ketentuan lomba EXPONER CUP 2026. Pilih bagian di bawah untuk langsung menuju informasi yang dibutuhkan.</p>
+        <p>Rangkuman aturan, persyaratan, dan dokumen teknis EXPONER CUP 2026. Pilih cabang lomba untuk membuka bagian yang kamu perlukan.</p>
     </header>
     <nav class="guide-nav" aria-label="Navigasi guidebook">
         <a href="#pendahuluan">Pendahuluan</a><a href="#daftar-lomba">Daftar lomba</a>
         <a href="#futsal">Futsal</a><a href="#basket">Basket</a><a href="#poster">Digital Poster</a>
         <a href="#pmr">PMR</a><a href="#mobile-legends">Mobile Legends</a><a href="#video">Video Competition</a>
+        <a href="#free-fire">Free Fire</a><a href="#short-movie">Short Movie</a>
     </nav>
 
-    <section class="guide-section" id="pendahuluan">
-        <h2>Pendahuluan</h2>
+    <section class="guide-section guide-section--intro" id="pendahuluan">
+        <h2><span aria-hidden="true">🌤️</span> Pendahuluan</h2>
         <p>Pada akhir tahun 2026, kami sebagian OSIS/MPK dan pihak Sekolah Prestasi Prima akan mengadakan kegiatan EXPONER yang bertema <strong>SUMMER</strong>.</p>
         <p>EXPONER merupakan acara yang dirancang oleh pihak OSIS/MPK. Acara ini bertujuan agar para siswa dan siswi Sekolah Prestasi Prima dapat mengembangkan kreativitas mereka di bidang non-akademik. Selain itu, acara ini dibuat agar para siswa dan siswi bisa saling bersosialisasi dan membentuk solidaritas yang kuat antar sesama murid di lingkungan Sekolah Prestasi Prima.</p>
     </section>
 
-    <section class="guide-section" id="daftar-lomba">
-        <h2>Daftar Lomba</h2>
+    <section class="guide-section guide-section--index" id="daftar-lomba">
+        <h2><span aria-hidden="true">📋</span> Daftar Lomba</h2>
         <div class="guide-events">
-            <a class="guide-event" href="#futsal"><span>01</span><strong>Futsal</strong><span>Aturan pertandingan dan persyaratan peserta</span></a>
-            <a class="guide-event" href="#basket"><span>02</span><strong>Basket</strong><span>Peraturan pertandingan dan teknis</span></a>
-            <a class="guide-event" href="#poster"><span>03</span><strong>Digital Poster</strong><span>Ketentuan peserta dan karya</span></a>
-            <a class="guide-event" href="#pmr"><span>04</span><strong>PMR</strong><span>Ketentuan umum dan cabang lomba</span></a>
-            <a class="guide-event" href="#mobile-legends"><span>05</span><strong>Mobile Legends</strong><span>Pendaftaran dan peraturan peserta</span></a>
-            <a class="guide-event" href="#video"><span>06</span><strong>Video Competition</strong><span>Ketentuan peserta dan karya</span></a>
-            <a class="guide-event" href="divisi/free-fire.html"><span>07</span><strong>Free Fire</strong><span>Informasi lomba dan dokumen teknis</span></a>
-            <a class="guide-event" href="divisi/short-movie.html"><span>08</span><strong>Short Movie</strong><span>Informasi lomba dan dokumen teknis</span></a>
+            <a class="guide-event" href="#futsal"><span>01</span><strong>⚽ Futsal</strong><span>Alur pertandingan, sanksi, dan syarat tim</span></a>
+            <a class="guide-event" href="#basket"><span>02</span><strong>🏀 Basket</strong><span>Jadwal main, ketentuan pemain, dan teknis</span></a>
+            <a class="guide-event" href="#poster"><span>03</span><strong>🎨 Digital Poster</strong><span>Aturan pengiriman serta orisinalitas karya</span></a>
+            <a class="guide-event" href="#pmr"><span>04</span><strong>🩺 PMR</strong><span>Ketentuan peserta dan tiga mata lomba</span></a>
+            <a class="guide-event" href="#mobile-legends"><span>05</span><strong>🎮 Mobile Legends</strong><span>Registrasi, komposisi pemain, dan larangan</span></a>
+            <a class="guide-event" href="#video"><span>06</span><strong>🎬 Video Competition</strong><span>Pengumpulan video dan penggunaan materi</span></a>
+            <a class="guide-event" href="#free-fire"><span>07</span><strong>🔥 Free Fire</strong><span>Juknis pertandingan tersedia dalam PDF</span></a>
+            <a class="guide-event" href="#short-movie"><span>08</span><strong>🎥 Short Movie</strong><span>Panduan teknis produksi film pendek</span></a>
         </div>
     </section>
 
-    <section class="guide-section" id="futsal">
-        <h2>Futsal</h2>
+    <section class="guide-section guide-section--futsal" id="futsal">
+        <h2><span aria-hidden="true">⚽</span> Futsal</h2>
         <div class="guide-subsection"><h3>Ketentuan Teknis dan Pertandingan</h3>
             <ol>
                 <li>Biaya pendaftaran perlombaan futsal sebesar Rp275.000,00 ditambah Rp50.000,00 (Walk Out).</li>
@@ -161,10 +181,11 @@
                 <li>Jika pembayaran menggunakan GoPay, sertakan screenshot bukti pembayaran dengan keterangan “Uang Pendaftaran Futsal Exponer Cup 2026 (ditambah nama asal sekolah)”.</li>
             </ol>
         </div>
+        <div class="guide-documents"><a href="../assets/documents/juknis-futsal.pdf" target="_blank" rel="noopener">📄 Buka juknis futsal (PDF)</a></div>
     </section>
 
-    <section class="guide-section" id="basket">
-        <h2>Basket</h2>
+    <section class="guide-section guide-section--basket" id="basket">
+        <h2><span aria-hidden="true">🏀</span> Basket</h2>
         <div class="guide-subsection"><h3>Peraturan Pertandingan</h3><ol>
             <li>Peserta adalah siswa/i aktif SMP/sederajat yang berdomisili di Jabodetabek.</li>
             <li>Peserta diharapkan memahami peraturan yang berlaku pada Exponer Cup.</li>
@@ -204,10 +225,11 @@
             <li>Dilarang memakai aksesori yang dapat mencederai lawan, kecuali handband, headband, kacamata sport, atau benda pelindung lainnya.</li>
             <li>Pemain wajib menggunakan seragam/jersey yang disesuaikan dengan tim sekolah masing-masing.</li><li>Warna kaus kaki harus selaras dengan jersey, misalnya jersey gelap dengan kaus kaki hitam atau jersey terang dengan kaus kaki putih.</li>
         </ol><p><strong>Contact person:</strong> 088905862768 — Aafiyah</p></div>
+        <div class="guide-documents"><a href="../assets/documents/juknis-basket.pdf" target="_blank" rel="noopener">📄 Baca juknis basket (PDF)</a></div>
     </section>
 
-    <section class="guide-section" id="poster">
-        <h2>Digital Poster</h2><div class="guide-subsection"><h3>Ketentuan Peserta dan Karya</h3><ol>
+    <section class="guide-section guide-section--poster" id="poster">
+        <h2><span aria-hidden="true">🎨</span> Digital Poster</h2><div class="guide-subsection"><h3>Ketentuan Peserta dan Karya</h3><ol>
             <li>Peserta merupakan peserta didik SMP/SMA/SMK/sederajat.</li><li>Peserta telah terdaftar sebagai peserta lomba.</li><li>Pendaftaran per individu, tidak berkelompok.</li>
             <li>Setiap sekolah boleh mengirim lebih dari satu peserta.</li><li>Peserta wajib menaati peraturan lomba poster.</li><li>Lomba dilaksanakan secara daring/online.</li>
             <li>Poster wajib dikirim tepat waktu sesuai jadwal. Keterlambatan langsung didiskualifikasi.</li><li>Peserta wajib mengikuti Technical Meeting. Ketidakhadiran mengurangi nilai akhir karya.</li>
@@ -215,10 +237,11 @@
             <li>Panitia tidak bertanggung jawab atas tuntutan hukum pihak lain terhadap karya yang dikirim.</li><li>Panitia berhak mendiskualifikasi peserta yang melanggar peraturan.</li>
             <li>Keputusan juri tidak dapat diganggu gugat.</li><li>Panitia berhak memposting peserta dan karyanya di media sosial untuk keperluan juara Exponer.</li><li>Karya harus orisinal.</li><li>Biaya pendaftaran Rp60.000,00.</li>
         </ol></div>
+        <div class="guide-documents"><a href="../assets/documents/juknis-poster-terbaru.pdf" target="_blank" rel="noopener">📄 Lihat petunjuk lomba poster (PDF)</a></div>
     </section>
 
-    <section class="guide-section" id="pmr">
-        <h2>PMR</h2>
+    <section class="guide-section guide-section--pmr" id="pmr">
+        <h2><span aria-hidden="true">🩺</span> PMR</h2>
         <div class="guide-subsection"><h3>Ketentuan Umum</h3><ol>
             <li>Peserta lomba merupakan anggota PMR aktif dari sekolah masing-masing.</li><li>Peserta memakai Pakaian Dinas Harian (PDH), Pakaian Dinas Lapangan (PDL), atau seragam sekolah dan slayer.</li>
             <li>Peserta yang tidak mengikuti Technical Meeting dianggap menerima dan menyetujui seluruh peraturan hasil Technical Meeting.</li><li>Setiap sekolah wajib mengikuti agenda pembukaan dan penutupan.</li>
@@ -241,10 +264,11 @@
             <li>Setiap tim terdiri dari 2 peserta.</li><li>Peserta wajib mengenakan PDH/seragam sekolah serta slayer sesuai tingkatan PMR masing-masing.</li><li>Peserta wajib menggunakan name tag selama perlombaan.</li>
         </ol><h4>Babak pertama — Tes tertulis</h4><ul><li>Seluruh peserta mengerjakan 100 soal tertulis secara serentak.</li><li>Waktu pengerjaan 90 menit.</li><li>Waktu dimulai setelah panitia memberi aba-aba “Mulai”.</li></ul>
         <h4>Babak kedua — Kahoot</h4><ul><li>10 tim dengan nilai tertinggi pada babak pertama berhak melanjutkan.</li><li>Peserta menjawab pertanyaan melalui aplikasi/platform Kahoot.</li><li>Peserta yang lolos wajib menggunakan 1 gadget/alat komunikasi pribadi.</li><li>Peserta wajib memastikan gadget siap digunakan dan menyediakan paket data/internet pribadi.</li></ul></div>
+        <div class="guide-documents"><a href="../assets/documents/juknis-pmr.pdf" target="_blank" rel="noopener">📄 Buka juknis PMR (PDF)</a><a href="../assets/documents/surat-rekomendasi-lomba-pmr-sma.pdf" target="_blank" rel="noopener">📄 Surat rekomendasi PMR — SMA</a></div>
     </section>
 
-    <section class="guide-section" id="mobile-legends">
-        <h2>Mobile Legends</h2>
+    <section class="guide-section guide-section--ml" id="mobile-legends">
+        <h2><span aria-hidden="true">🎮</span> Mobile Legends</h2>
         <div class="guide-subsection"><h3>Pendaftaran</h3><ol>
             <li>Pendaftaran dibuka untuk SMP/SMA/SMK sederajat.</li><li>HTM Rp150.000. Pendaftaran dilakukan secara offline/online melalui link pendaftaran.</li>
             <li>Batas waktu pendaftaran: 19 September–14 Oktober.</li><li>Pembayaran paling lambat H-3 sebelum Technical Meeting.</li>
@@ -263,10 +287,11 @@
             <li>Peserta wajib mengikuti aturan yang berlaku. Pelanggaran dapat berakibat diskualifikasi.</li><li>Setiap pemain wajib saling menghormati dan dilarang menyebabkan keributan.</li>
             <li>Pelunasan wajib dibayarkan H-3 Technical Meeting.</li><li>Peserta wajib menyiapkan data internet masing-masing.</li>
         </ol></div>
+        <div class="guide-documents"><a href="../assets/documents/juknis-ml.pdf" target="_blank" rel="noopener">📄 Buka juknis Mobile Legends (PDF)</a></div>
     </section>
 
-    <section class="guide-section" id="video">
-        <h2>Video Competition</h2><div class="guide-subsection"><h3>Ketentuan Peserta dan Karya</h3><ol>
+    <section class="guide-section guide-section--video" id="video">
+        <h2><span aria-hidden="true">🎬</span> Video Competition</h2><div class="guide-subsection"><h3>Ketentuan Peserta dan Karya</h3><ol>
             <li>Peserta merupakan peserta didik SMP/SMA/SMK/sederajat se-Jabodetabek.</li><li>Peserta telah terdaftar sebagai peserta lomba.</li><li>Setiap sekolah boleh mengirim lebih dari satu perwakilan.</li>
             <li>Karya harus sesuai tema yang ditentukan.</li><li>Peserta wajib menaati peraturan lomba konten digital.</li><li>Lomba dilaksanakan secara daring/online.</li>
             <li>Karya wajib dikirim tepat waktu sesuai jadwal. Karya yang melewati batas waktu didiskualifikasi.</li><li>Peserta wajib mengikuti Technical Meeting. Ketidakhadiran mengurangi nilai akhir karya.</li>
@@ -279,6 +304,19 @@
             <li>Panitia berhak mendiskualifikasi peserta yang melanggar peraturan.</li><li>Panitia berhak memposting peserta dan karya di media sosial untuk publikasi dan promosi Video Competition.</li>
             <li>Segala keputusan juri bersifat mutlak dan tidak dapat diganggu gugat.</li>
         </ol></div>
+        <div class="guide-documents"><a href="../assets/documents/juknis-video-competition.pdf" target="_blank" rel="noopener">📄 Pedoman Video Competition (PDF)</a></div>
+    </section>
+
+    <section class="guide-section guide-section--ff" id="free-fire">
+        <h2><span aria-hidden="true">🔥</span> Free Fire</h2>
+        <p>Rincian format pertandingan dan aturan peserta tersedia pada dokumen teknis resmi.</p>
+        <div class="guide-documents"><a href="../assets/documents/juknis-ff.pdf" target="_blank" rel="noopener">📄 Buka juknis Free Fire (PDF)</a></div>
+    </section>
+
+    <section class="guide-section guide-section--shortmovie" id="short-movie">
+        <h2><span aria-hidden="true">🎥</span> Short Movie</h2>
+        <p>Panduan produksi dan syarat pengumpulan film pendek dapat dibaca di juknis berikut.</p>
+        <div class="guide-documents"><a href="../assets/documents/juknis-shortmovie.pdf" target="_blank" rel="noopener">📄 Buka juknis Short Movie (PDF)</a></div>
     </section>
 
     <footer class="guide-footer"><span>EXPONER CUP 2026</span><span>Explosion of Generation</span></footer>

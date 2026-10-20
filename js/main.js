@@ -34,7 +34,15 @@ function initCountdown() {
 
     function tick() {
         const now = Date.now();
-        const diff = Math.max(0, eventTime - now);
+        const diff = eventTime - now;
+
+        if (diff <= 0) {
+            const countdown = document.getElementById('countdown');
+            countdown.classList.add('timer-ended');
+            countdown.setAttribute('role', 'status');
+            countdown.textContent = '🎉 EXPONER CUP 2026 sudah dimulai';
+            return false;
+        }
 
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor(
@@ -51,10 +59,10 @@ function initCountdown() {
         hoursEl.textContent = pad(hours);
         minutesEl.textContent = pad(minutes);
         secondsEl.textContent = pad(seconds);
+        return true;
     }
 
-    tick();
-    setInterval(tick, 1000);
+    if (tick()) setInterval(tick, 1000);
 }
 
 // ============================================================
@@ -165,7 +173,8 @@ guidebook: '../../pages/guidebook.html',
             juknis: '../../assets/documents/juknis-pmr.pdf',
             pendaftaran: 'https://forms.gle/UMHosL34Ak1xNB6DA',
             undangan_smp: '../../assets/documents/surat-undangan-smp.pdf',
-            undangan_sma: '../../assets/documents/surat-undangan-sma.pdf'
+            undangan_sma: '../../assets/documents/surat-undangan-sma.pdf',
+            surat_rekomendasi_sma: '../../assets/documents/surat-rekomendasi-lomba-pmr-sma.pdf'
         }
     },
     poster: {
@@ -255,7 +264,16 @@ function renderDivisionPage() {
     // 4 dokumen: Guidebook / Juknis / Pendaftaran / Surat Undangan
     const list = document.getElementById('docsList');
     if (list) {
-        list.innerHTML = DOC_DEFS.flatMap((doc) => {
+        const pageDocs = slug === 'pmr'
+            ? [...DOC_DEFS, {
+                key: 'surat_rekomendasi_sma',
+                icon: 'file-check-2',
+                label: 'Surat Rekomendasi Lomba PMR — SMA',
+                sub: 'Dokumen resmi dalam format PDF'
+            }]
+            : DOC_DEFS;
+
+        list.innerHTML = pageDocs.flatMap((doc) => {
             const raw = (data.links && data.links[doc.key]) || '';
             const items = Array.isArray(raw) ? raw : [raw];
             return items.map((it) => {

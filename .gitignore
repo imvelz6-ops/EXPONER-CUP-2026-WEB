@@ -1,3 +1,14 @@
 node_modules/
 dist/
 .wrangler/
+
+# Local credentials and environment-specific secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
